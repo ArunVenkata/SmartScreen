@@ -37,7 +37,7 @@ Note: Currently supports only Linux Platforms
 
 To start the development server and run the Tauri application:
 ```bash
-npm run tauri dev
+sudo -E env PATH=$PATH npm run tauri dev 
 ```
 
 ### Project Structure
