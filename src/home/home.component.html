@@ -1,0 +1,31 @@
+<div class="flex w-full items-center justify-center p-4">
+
+    <div class="flex flex-col items-center">
+        <h1 class="text-2xl font-bold">SmartScreen</h1>
+        <div class="flex justify-center w-full">
+            <p class="text-sm font-[inter]">Made with <span nz-icon nzType="heart" nzTheme="fill" class="text-red-500"></span> by Arun V</p>
+          </div>
+    </div>
+</div>
+<div class="flex flex-col items-center p-4">
+    <p class="text-center text-gray-600 w-1/2">
+        SmartScreen is an intuitive application designed to help you effortlessly control and adjust your screen's brightness for an optimal viewing experience.
+    </p>
+</div>
+<div nz-row class="p-4">
+    <div nz-col nzSpan="6">
+        <p class="text-lg ">Brightness ({{currentBrightnessPercentage}}%)</p>
+    </div>
+    <div nz-col nzSpan="16">
+        <nz-slider [nzMin]="1" [nzDisabled]="sliderDisabled" [nzMax]="100" [(ngModel)]="currentBrightnessPercentage"
+            (ngModelChange)="updateBrightness($event)"></nz-slider>
+        <div class="flex" *ngIf="sliderDisabled">
+            <span nz-icon nzType="info-circle" nzTheme="outline" class="mr-2" ></span>
+            Your Brightness is being managed via a schedule
+        </div>
+    </div>
+</div>
+
+<div class="flex flex-col items-center p-4">
+    <button routerLink="preferences" class="flex items-center" nz-button nzType="primary" nzSize="large"><span nz-icon nzType="setting" class="mr-1" nzTheme="outline"></span>Go To Settings</button>
+</div>

@@ -1,0 +1,30 @@
+<div class="flex h-10 bg-gray-100 border-b border-b-slate-200">
+    <ng-container *ngIf="isHistoryAvailable()">
+        <button class="h-full" nz-button nzType="text" (click)="onBack()"><span nz-icon nzType="arrow-left"
+                class="text-lg p-2" nzTheme="outline"></span></button>
+    </ng-container>
+    <div class="flex items-center border-left border-l h-full border-l-gray-300 mr-0 ml-auto">
+        <button nz-button nzType="text" class="hover:bg-transparent active:bg-transparent" nz-dropdown nzTrigger="click"
+            [nzDropdownMenu]="menu">
+            <span nz-icon nzType="menu" nzTheme="outline"></span>
+        </button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="flex" [routerLink]="['/preferences']">
+                    <span nz-icon nzType="setting" class="mr-1" nzTheme="outline"></span>
+                    Preferences
+                </li>
+                <li nz-menu-item class="flex">
+                    <span nz-icon nzType="info-circle" class="mr-1" nzTheme="outline"></span>
+                    About
+                </li>
+                <li nz-menu-item class="flex" (click)="exitApp()">
+                    <span nz-icon nzType="logout" class="mr-1" nzTheme="outline"></span>
+                    Exit
+                </li>
+
+            </ul>
+        </nz-dropdown-menu>
+    </div>
+
+</div>

@@ -1,0 +1,65 @@
+<div class="flex p-4 flex-col">
+    
+
+    <h2 class="text-2xl">
+        <span nz-icon nzType="setting" class="mr-2" nzTheme="outline"></span>
+        Preferences <button nz-button nzType="primary" class="ml-2" (click)="saveAllSettings()">Save All</button></h2>
+    
+
+    <section>
+        <h3 class="text-xl">Schedules</h3>
+        <div nz-row class="p-4">
+            <div nz-col>
+                <label nz-checkbox [(ngModel)]="scheduleEnabled">Enable Brightness Schedules</label>
+            </div>
+        </div>
+
+        <div *ngIf="scheduleEnabled" class="ml-4">
+
+            <div class="mt-2">
+                <button nz-button nzType="default" (click)="addSchedule()">Add Schedule</button>
+            </div>
+            <div nz-row class="mt-2">
+              <div nz-col>
+                <label for="refreshinterval" class="mr-2">Refresh Interval in Seconds</label>
+                <nz-input-number id="refreshinterval" [(ngModel)]="refreshInterval" [nzMin]="5" [nzMax]="1000" />
+              </div>
+          </div>
+            <div *ngFor="let schedule of schedules; let i = index" nz-row class="mt-4 mb-4 items-center bg-gray-100 p-4 rounded-lg shadow-sm">
+              <div nz-col nzSpan="6" class="flex items-center">
+                <label class="font-medium text-gray-700 mr-1">From</label>
+                <nz-time-picker 
+                  [(ngModel)]="schedule.from"
+                  nzFormat="HH:mm"
+                  [nzDisabledHours]="getDisabledHours(i, true)"
+                  [nzDisabledMinutes]="getDisabledMinutes(i, true)"
+                  (ngModelChange)="validateTime(i)"
+                  class="w-fit"
+                ></nz-time-picker>
+              </div>
+              <div nz-col nzSpan="6" class="flex items-center ml-4">
+                <label class="font-medium text-gray-700 mr-1">To</label>
+                <nz-time-picker
+                  [(ngModel)]="schedule.to"
+                  nzFormat="HH:mm"
+                  [nzDisabledHours]="getDisabledHours(i, false)"
+                  [nzDisabledMinutes]="getDisabledMinutes(i, false)"
+                  (ngModelChange)="validateTime(i)"
+                  class="w-fit"
+                ></nz-time-picker>
+              </div>
+              <div nz-col nzSpan="6" class="flex items-center ml-4">
+                <label class="font-medium text-gray-700 mr-1">Brightness %</label>
+                <nz-input-number [(ngModel)]="schedule.brightness" [nzMin]="0" [nzMax]="100" />
+              </div>
+              <div nz-col nzFlex="auto" class="flex justify-center items-center ml-4">
+                <button nz-button nzType="default" nzDanger (click)="removeSchedule(i)">
+                    <span nz-icon nzType="delete" nzTheme="outline"></span>
+                </button>
+              </div>
+            </div>
+        
+          </div>
+    </section>
+
+</div>
