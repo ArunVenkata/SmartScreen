@@ -9,6 +9,12 @@ Ensure you have the following installed on your system:
 
 Note: Currently supports only Linux Platforms
 
+### What it looks like
+
+![image](https://github.com/user-attachments/assets/98494209-d2c6-43aa-8ade-165f607e3b8d)
+![image](https://github.com/user-attachments/assets/f08205a1-3e68-44a2-96fb-6bf1effd8434)
+
+
 ### Installation
 
 1. Clone the repository:
